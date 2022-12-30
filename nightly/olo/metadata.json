@@ -1,0 +1,21 @@
+{
+    "acknowledgements": [
+        "Kone Foundation: Creation of Morphological Parsers for Minority Finno-Ugrian Languages: 2013--2014",
+        "Giellatekno"
+    ],
+    "authors": [
+        "Jack Rueter",
+        "Timo Rantakaulio",
+        "Jelena Ruppijeva",
+        "Trond Trosterud",
+        "Ryan Johnson",
+        "Sjur Moshagen",
+        "Ciprian Gerstenberger",
+        "Heli Uibo",
+        "Lene Antonsen",
+        "Børre Gaup"
+    ],
+    "cite": "",
+    "license": "GNU GPL",
+    "website": "https://victorio.uit.no/langtech/trunk/langs/olo/"
+}
