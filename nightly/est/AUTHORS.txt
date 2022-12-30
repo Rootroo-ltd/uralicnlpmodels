@@ -1,0 +1,6 @@
+Authors of gtlangs-est package.
+
+Heiki-Jaan Kaalep (morphology, phonology, speller suggestions, grammar checker) 
+Tiina Puolakainen (Constraint Grammar disambiguation) 
+Kaili Müürisep    (Constraint Grammar disambiguation and grammar checker)
+
