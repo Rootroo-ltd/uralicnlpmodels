@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://getbootstrap.com/docs/4.4/examples/product/# -->
+<html lang="en"><!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Wolf NLP - FSTs for multiple languages</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/product/">
+
+    <!-- Bootstrap core CSS -->
+<link href="index_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="index_files/product.css" rel="stylesheet">
+  <style>@media print {#ghostery-purple-box {display:none !important}}</style><style></style></head>
+  <body onload="sortNames()">
+    <nav class="site-header sticky-top py-1">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+
+    <a class="py-2 d-none d-md-inline-block" href="nightly/index.html">Nightly Builds</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Releases (to be done)</a>
+    <a class="py-2 d-none d-md-inline-block" href="#about">About</a>
+    <a class="py-2 d-none d-md-inline-block" href="https://github.com/mikahama/nightly-fst-server/">Contribute</a>
+    <a class="py-2 d-none d-md-inline-block" href="https://github.com/mikahama/nightly-fst-server/">GitHub</a>
+  </div>
+</nav>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">Wolf NLP: Multilingual resources for NLP</h1>
+    <p class="lead font-weight-normal">This server builds NLP tools for multiple languages every night. This means FST-based morphological analysers and generators, constraint grammar disambiguators and more! And better yet, everything can be used easily with UralicNLP!</p>
+    <a class="btn btn-outline-secondary" href="nightly/index.html">Nightly builds</a>
+    <a class="btn btn-outline-primary" href="https://github.com/mikahama/uralicNLP">Discover UralicNLP</a>
+  </div>
+
+</div>
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5">Nightly builds</h2>
+      <p class="lead">The server builds automatically FSTs form <a href="https://giellalt.uit.no/">GiellaLT</a> every night. In addition, many more FSTs are provided.</p>
+    </div>
+    <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <a class="btn btn-outline-secondary button-middle" href="nightly/index.html">Nightly builds</a>
+    </div>
+  </div>
+  
+<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Releases</h2>
+      <p class="lead">A plan for this project is to upload the compiled resources to Zenodo in a timely manner.</p>
+    </div>
+    <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <a class="btn btn-outline-primary button-middle" href="#">Releases (to be done)</a>
+    </div>
+  </div>
+</div>
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Contribute</h2>
+      <p class="lead">Bring your own FSTs in by contacing us.</p>
+    </div>
+    <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <a class="btn btn-outline-primary button-middle" href="https://github.com/mikahama/nightly-fst-server/">Get in touch on GitHub</a>
+    </div>
+  </div>
+  <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5">Use the resources</h2>
+      <p class="lead">We have put a lot of effort in making it as easy as possible to use the FSTs and CGs. Take a look at UralicNLP to find out more</p>
+    </div>
+    <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <a class="btn btn-outline-secondary button-middle" href="https://github.com/mikahama/uralicNLP">UralicNLP</a>
+    </div>
+  </div>
+</div>
+
+
+<footer class="container py-5">
+  <div >
+    <h2 name="about">About</h2>
+
+    <p>The master minds behind this operation from the University of Helsinki in a random order:</p>
+
+    <ul id="sortableNames">
+      <li><a href="https://mikakalevi.com/">Mika Hämäläinen</a></li>
+      <li><a href="https://researchportal.helsinki.fi/en/persons/niko-partanen">Niko Partanen</a></li>
+      <li><a href="https://khalidalnajjar.com/">Khalid Alnajjar</a></li>
+      <li><a href="https://researchportal.helsinki.fi/en/persons/jack-rueter">Jack Rueter</a></li>
+    </ul>
+    <div class="col-1 col-md">
+      <small class="d-block mb-3 text-muted">This server is a <a href="https://csc.fi/">CSC</a> cPouta instance</small>
+    </div>
+    
+  </div>
+</footer>
+<script src="index_files/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>
+        window.jQuery || document.write('<script src="docs/4.4/assets/js/vendor/jquery.slim.min.html"><\/script>')
+        function sortNames(){
+          names = $("#sortableNames").find("li");
+          shuffle(names);
+          html = "";
+          names.each(function() {
+             html += $(this)[0].outerHTML;
+          });
+          $("#sortableNames").html(html);
+        }
+       function shuffle(a) {
+          var j, x, i;
+          for (i = a.length - 1; i > 0; i--) {
+              j = Math.floor(Math.random() * (i + 1));
+              x = a[i];
+              a[i] = a[j];
+              a[j] = x;
+          }
+          return a;
+      }
+    </script><script src="index_files/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+</body></html>
