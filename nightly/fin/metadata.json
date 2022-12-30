@@ -1,0 +1,19 @@
+{
+    "CG": {
+        "authors": "(C) FRED KARLSSON 1989-2000",
+        "license": "GNU GPL",
+        "note": "FINCG (CONSTRAINT GRAMMAR FOR FINNISH)"
+    },
+    "FST": {
+        "acknowledgements": "",
+        "authors": [
+            "Tommi A. Pirinen",
+            "Inari Listenmaa",
+            "Ryan Johnson",
+            "Francis Tyers"
+        ],
+        "cite": "see https://flammie.github.io/omorfi/pages/Articles.html",
+        "license": "GNU GPL",
+        "website": "https://github.com/flammie/omorfi"
+    }
+}
