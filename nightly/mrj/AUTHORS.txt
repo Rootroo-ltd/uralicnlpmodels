@@ -1,0 +1,17 @@
+Authors of gtlangs-mrj package.
+aka Finite-state transducer-based computational models of Hill Mari morphology
+
+See also ChangeLog and THANKS.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Julia Kuprina
+Valeri Alikov
+Andrei Chemyshev
+Trond Trosterud
+Ryan Johnson
+Sjur Moshagen
+Ciprian Gerstenberger
+Børre Gaup
