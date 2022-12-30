@@ -1,0 +1,20 @@
+{
+    "acknowledgements": [
+        "University of Tartu",
+        "GiellaLT"
+    ],
+    "authors": [
+        "Jack Michael Rueter",
+        "Sulev Iva",
+        "Heli Uibo",
+        "Heiki-Jaan Kaalep",
+        "Trond Trosterud",
+        "Ryan Johnson",
+        "Sjur Moshagen",
+        "Ciprian Gerstenberger",
+        "Børre Gaup"
+    ],
+    "cite": "",
+    "license": "GNU GPL",
+    "website": "https://victorio.uit.no/langtech/trunk/langs/vro/"
+}
