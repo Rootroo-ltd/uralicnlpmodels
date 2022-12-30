@@ -1,0 +1,8 @@
+Authors of gtlangs-tuv package.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Tommi A Pirinen <tommi.pirinen@helsinki.fi>
+Don Killian
+

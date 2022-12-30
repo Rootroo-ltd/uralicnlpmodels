@@ -1,0 +1,7 @@
+Authors of gtlangs-tlh package.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Flammie A Pirinen <flammie@iki.fi>
+
