@@ -1,0 +1,22 @@
+{
+    "acknowledgements": [
+        "Kone Foundation: Creation of Morphological Parsers for Minority Finno-Ugrian Languages: 2013--2014",
+        "GiellaLT"
+    ],
+    "authors": [
+        "Jack Rueter",
+        "Merja Salo",
+        "Oleg Kazanin",
+        "Marija Levina",
+        "Valentina Grishunina",
+        "Nadezhda Kabajeva",
+        "Trond Trosterud",
+        "Ryan Johnson",
+        "Sjur Moshagen",
+        "Ciprian Gerstenberger",
+        "Heli Uibo"
+    ],
+    "cite": "Rueter, J., Hämäläinen, M., & Partanen, N. (2020). Open-Source Morphology for Endangered Mordvinic Languages. In Proceedings of Second Workshop for NLP Open Source Software (NLP-OSS) (pp. 94–100). The Association for Computational Linguistics.",
+    "license": "CC BY",
+    "website": "https://victorio.uit.no/langtech/trunk/langs/mdf/"
+}
