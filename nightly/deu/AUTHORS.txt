@@ -1,0 +1,14 @@
+Authors of gtlangs-deu package.
+aka Finite-state transducer-based computational models of German morphology
+
+See also ChangeLog and THANKS.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Janine Siewerts
+Francis Tyers
+Trond Trosterud
+Sjur Moshagen
+Ciprian Gerstenberger
