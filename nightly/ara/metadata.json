@@ -1,0 +1,8 @@
+{
+"license": "GNU GPL",
+"authors": ["Mohammed Attia","Josef van Genabith","Pavel Pecina","Antonio Toral","Lamia Tounsi"],
+"copyright":"Copyright (c) 2008-2018 Mohammed Attia",
+"cite": "see https://ieeexplore.ieee.org/document/8200100",
+"website": "https://sourceforge.net/projects/aracomlex/",
+"fst_type":"foma"
+}
