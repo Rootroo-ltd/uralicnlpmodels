@@ -1,0 +1,21 @@
+Authors of gtlangs-mdf package.
+aka Finite-state transducer-based computational models of Moksha morphology
+
+See also ChangeLog and THANKS.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Merja Salo
+Oleg Kazanin
+Marina Lyovina
+Valentina Grishunina
+Nadezhda Kabajeva
+Trond Trosterud
+Ryan Johnson
+Sjur Moshagen
+Ciprian Gerstenberger
+Heli Uibo
+Børre Gaup
+
