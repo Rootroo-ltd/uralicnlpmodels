@@ -1,0 +1,16 @@
+Authors of gtlangs-izh package.
+aka Finite-state transducer-based computational models of Ingrian morphology
+
+See also ChangeLog and THANKS.
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Timo Rantakaulio
+Trond Trosterud
+Ryan Johnson
+Sjur Moshagen
+Ciprian Gerstenberger
+Børre Gaup
+

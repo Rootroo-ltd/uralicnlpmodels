@@ -1,0 +1,18 @@
+{
+    "acknowledgements": [
+        "Kone Foundation: Creation of Morphological Parsers for Minority Finno-Ugrian Languages: 2013--2014",
+        "Giellatekno"
+    ],
+    "authors": [
+        "Jack Rueter",
+        "Timo Rantakaulio",
+        "Trond Trosterud",
+        "Ryan Johnson",
+        "Sjur Moshagen",
+        "Ciprian Gerstenberger",
+        "Børre Gaup"
+    ],
+    "cite": "",
+    "license": "CC BY",
+    "website": "https://victorio.uit.no/langtech/trunk/langs/izh/"
+}
