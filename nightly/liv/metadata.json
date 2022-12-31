@@ -1,0 +1,21 @@
+{
+    "acknowledgements": [
+        "Kone Foundation: Creation of Morphological Parsers for Minority Finno-Ugrian Languages: 2013--2014",
+        "Giellatekno"
+    ],
+    "authors": [
+        "Jack Rueter",
+        "Renata Bloomberga",
+        "Tiit-Rein Viitso",
+        "Valts Ernstreits",
+        "Trond Trosterud",
+        "Ryan Johnson",
+        "Sjur Moshagen",
+        "Ciprian Gerstenberger",
+        "Heli Uibo",
+        "Børre Gaup"
+    ],
+    "cite": "Rueter, Jack. 2014: THE LIVONIAN-ESTONIAN-LATVIAN DICTIONARY AS A THRESHOLD TO THE ERA OF LANGUAGE TECHNOLOGICAL APPLICATIONS. Vol 5, No 1 (2014) Special issue \"Studies on Livonian\". Guest editors Valts Ernštreits and Karl Pajusalu. ESUKA – JEFUL 2014, 5–1: 251–259. University of Tartu.",
+    "license": "CC BY",
+    "website": "https://victorio.uit.no/langtech/trunk/langs/liv/"
+}
