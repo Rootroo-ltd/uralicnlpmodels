@@ -1,6 +1,13 @@
 Authors of gtlangs-skf package.
+aka Finite-state transducer-based computational models of Sakurabiat morphology
+
+See also ChangeLog and THANKS.
 
 The following people have legal copyright to files and software in this
 directory and its subdirectories:
 
-__FIXME__
+Jack Michael Rueter
+Ana Vilacy Galucio
+Trond Trosterud
+Sjur Moshagen
+
