@@ -1,0 +1,12 @@
+Authors of gtlangs-pad package.
+aka Finite-state transducer-based computational models of Paumarí morphology
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Rian Maia
+Sidney Facundes
+Trond Trosterud
+Sjur Moshagen
+
