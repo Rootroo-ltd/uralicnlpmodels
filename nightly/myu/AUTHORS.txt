@@ -1,0 +1,13 @@
+Authors of gtlangs-myu package.
+aka Finite-state transducer-based computational models of Mundurukú morphology
+
+The following people have legal copyright to files and software in this
+directory and its subdirectories:
+
+Jack Michael Rueter
+Mailson Lameira
+Edilson Pinheiro
+Gessiane Picanço
+Trond Trosterud
+Sjur Moshagen
+
