@@ -1,0 +1,336 @@
+# Distributed under the terms of the GNU General Public License version 2 
+# or any later version.
+
+# =================================================================== #
+# =================================================================== #
+#!! # K H A N T Y   D I S A M B I G U A T O R          
+# =================================================================== #
+# =================================================================== #
+# Copied from Northern Mansi 2021-11-22
+
+#!! **Nore!** Some tag declarations or sets may be left from copying this file from sma.
+
+
+            # =========================================== #
+            #           Short table of contents          
+            # =========================================== #
+
+            # Delimiters
+            # Tags and sets
+	        # Mapping rules
+            # Disambiguation rules
+              # One-cohort disambiguation - cycle 0
+              # Local disambiguation - cycles 1 and 2
+              # Cycle 2: Other local disambiguation         
+              # Cycle 3: Global disambiguation 
+	          # Cycle 4: Syntactic disambiguation 
+	          # Cycle 5: Post-syntactic morphological disambiguation
+
+
+# ========== #
+#!! ## Delimiters , tags and sets
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>"; #!!≈ @CODE
+
+
+# ============= #
+#!! ## Tags and sets 
+# ============= #
+
+#!!s BOS/EOS
+
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+#!! ### Tags declared as single-membered LISTs 
+# ======================================
+
+LIST N = N ;				 #!!≈ * @CODE@
+LIST Sg = Sg ;				 #!!≈ * @CODE@
+LIST Pl = Pl ;				 #!!≈ * @CODE@
+LIST Nom = Nom ;			 #!!≈ * @CODE@
+LIST Acc = Acc ;			 #!!≈ * @CODE@
+LIST Gen = Gen ;			 #!!≈ * @CODE@
+LIST Par = Par ;			 #!!≈ * @CODE@
+LIST Loc = Loc ;			 #!!≈ * @CODE@
+LIST Abl = Abl ;			 #!!≈ * @CODE@
+LIST Lat = Lat ;			 #!!≈ * @CODE@
+LIST Tra = Tra ;			 #!!≈ * @CODE@
+LIST PxSg1 = PxSg1 ;		 #!!≈ * @CODE@
+LIST PxSg2 = PxSg2 ;		 #!!≈ * @CODE@
+LIST PxSg3 = PxSg3 ;		 #!!≈ * @CODE@
+LIST PxDu1 = PxDu1 ;		 #!!≈ * @CODE@
+LIST PxDu2 = PxDu2 ;		 #!!≈ * @CODE@
+LIST PxDu3 = PxDu3 ;		 #!!≈ * @CODE@
+LIST PxPl1 = PxPl1 ;		 #!!≈ * @CODE@
+LIST PxPl2 = PxPl2 ;		 #!!≈ * @CODE@
+LIST PxPl3 = PxPl3 ;		 #!!≈ * @CODE@
+LIST V = V ;				 #!!≈ * @CODE@
+LIST Prs = Prs ;			 #!!≈ * @CODE@
+LIST Prt = Prt ;			 #!!≈ * @CODE@
+LIST Sg1 = Sg1 ;			 #!!≈ * @CODE@
+LIST Sg2 = Sg2 ;			 #!!≈ * @CODE@
+LIST Sg3 = Sg3 ;			 #!!≈ * @CODE@
+LIST Du1 = Du1 ;			 #!!≈ * @CODE@
+LIST Du2 = Du2 ;			 #!!≈ * @CODE@
+LIST Du3 = Du3 ;			 #!!≈ * @CODE@
+LIST Pl1 = Pl1 ;			 #!!≈ * @CODE@
+LIST Pl2 = Pl2 ;			 #!!≈ * @CODE@
+LIST Pl3 = Pl3 ;			 #!!≈ * @CODE@
+LIST Inf = Inf ;			 #!!≈ * @CODE@
+LIST Neg = Neg ;			 #!!≈ * @CODE@
+LIST ConNeg = ConNeg ;		 #!!≈ * @CODE@
+LIST Foc/gan = Foc/gan ;	 #!!≈ * @CODE@
+LIST PrfPrc = PrfPrc ;		 #!!≈ * @CODE@
+LIST PrsPrc = PrsPrc ;		 #!!≈ * @CODE@
+LIST VGen = VGen ;			 #!!≈ * @CODE@
+LIST Ger = Ger ;			 #!!≈ * @CODE@
+LIST Ind = Ind ;			 #!!≈ * @CODE@
+LIST Imp = Imp ;			 #!!≈ * @CODE@
+LIST ImpII = ImpII ;		 #!!≈ * @CODE@
+LIST Pot = Pot ;			 #!!≈ * @CODE@
+LIST Cond = Cond ;			 #!!≈ * @CODE@
+LIST Imprt = Imprt ;		 #!!≈ * @CODE@
+LIST IV = IV ; 				 #!!≈ * @CODE@
+LIST TV = TV ;				 #!!≈ * @CODE@
+LIST Opt = Opt ;			 #!!≈ * @CODE@
+LIST Actor = Actor ;		 #!!≈ * @CODE@
+LIST Clt = Clt ;			 #!!≈ * @CODE@
+LIST A = A ;				 #!!≈ * @CODE@
+LIST Pos = Pos ;			 #!!≈ * @CODE@
+LIST Ord = Ord ;			 #!!≈ * @CODE@
+LIST Coll = Coll ;			 #!!≈ * @CODE@
+LIST ABBR = ABBR ;			 #!!≈ * @CODE@
+LIST ACR = ACR ;			 #!!≈ * @CODE@
+LIST Comp = Comp ;			 #!!≈ * @CODE@
+LIST Superl = Superl ;		 #!!≈ * @CODE@
+LIST Attr = Attr ;			 #!!≈ * @CODE@
+LIST Pron = Pron ;			 #!!≈ * @CODE@
+LIST Pers = Pers ;			 #!!≈ * @CODE@
+LIST Dem = Dem ;			 #!!≈ * @CODE@
+LIST Interr = Interr ;		 #!!≈ * @CODE@
+LIST Rel = Rel ;			 #!!≈ * @CODE@
+LIST Po = Po ;				 #!!≈ * @CODE@
+LIST Pr = Pr ;				 #!!≈ * @CODE@
+LIST Adv = Adv ;			 #!!≈ * @CODE@
+LIST Interj = Interj ;		 #!!≈ * @CODE@
+LIST Indef = Indef ;		 #!!≈ * @CODE@
+LIST Num = Num ;			 #!!≈ * @CODE@
+LIST Prop = Prop ;			 #!!≈ * @CODE@
+LIST Mal = Mal ;			 #!!≈ * @CODE@
+LIST Fem = Fem ;			 #!!≈ * @CODE@
+LIST Sur = Sur ;			 #!!≈ * @CODE@
+LIST Org = Org ;			 #!!≈ * @CODE@
+LIST CS = CS ;				 #!!≈ * @CODE@
+LIST CC = CC ;				 #!!≈ * @CODE@
+LIST Pcle = Pcle ;			 #!!≈ * @CODE@
+LIST CLB = CLB ;			 #!!≈ * @CODE@
+LIST LEFT = LEFT ;			 #!!≈ * @CODE@
+LIST RIGHT = RIGHT ;		 #!!≈ * @CODE@
+LIST COMMA = "," ;			 #!!≈ * @CODE@
+LIST Der1 = Der1 ;			 #!!≈ * @CODE@
+LIST Der2 = Der2 ;			 #!!≈ * @CODE@
+LIST Der3 = Der3 ;			 #!!≈ * @CODE@
+LIST QMARK = """ ; # ADD " FOR SYNTAX COLOURING.
+
+#!! ### Semantic tags
+
+LIST Sem/Ani = Sem/Ani ;	 #!!≈ * @CODE@ 
+LIST Sem/Fem = Sem/Fem ;	 #!!≈ * @CODE@ 
+LIST Sem/Mal = Sem/Mal ;	 #!!≈ * @CODE@ 
+LIST Sem/Obj = Sem/Obj ;	 #!!≈ * @CODE@ 
+LIST Sem/Org = Sem/Org ;	 #!!≈ * @CODE@ 
+LIST Sem/Plc = Sem/Plc ;	 #!!≈ * @CODE@ 
+LIST Sem/Sur = Sem/Sur ;	 #!!≈ * @CODE@ 
+LIST Sem/Time = Sem/Time ;	 #!!≈ * @CODE@ 
+LIST Sem/Hum = Sem/Hum ;	 #!!≈ * @CODE@ 
+LIST Sem/Date = Sem/Date ;	 #!!≈ * @CODE@ 
+LIST Sem/Year = Sem/Year ;	 #!!≈ * @CODE@ 
+LIST Sem/Group = Sem/Group ; #!!≈ * @CODE@ 
+LIST Sem/Route = Sem/Route ; #!!≈ * @CODE@ 
+LIST Sem/Build = Sem/Build ; #!!≈ * @CODE@ 
+LIST Sem/Place = Sem/Place ; #!!≈ * @CODE@ 
+LIST Sem/Food = Sem/Food ;	 #!!≈ * @CODE@ 
+SET FIRSTNAME = (Prop Sem/Fem) OR (Prop Sem/Mal) ; #!!≈ * @CODE@ 
+
+#!! ### Syntactic tags
+
+LIST @CNP = @CNP ;				    #!!≈ * @CODE@ 
+LIST @CVP = @CVP ;				    #!!≈ * @CODE@ 
+LIST @+FAUXV = @+FAUXV ; 		    #!!≈ * @CODE@ 
+LIST @+FMAINV = @+FMAINV ; 		    #!!≈ * @CODE@ 
+LIST @-FAUXV = @-FAUXV ;		    #!!≈ * @CODE@ 
+LIST @-FMAINV = @-FMAINV ;		    #!!≈ * @CODE@ 
+SET MAINV = @-FMAINV OR @+FMAINV ;  #!!≈ * @CODE@ 
+LIST @ADVL = @ADVL ;			    #!!≈ * @CODE@ 
+LIST @>ADVL = @>ADVL ;			    #!!≈ * @CODE@ 
+LIST @ADVL< = @ADVL< ;			    #!!≈ * @CODE@ 
+LIST @<ADVL = @<ADVL ;			    #!!≈ * @CODE@ 
+LIST @ADVL> = @ADVL> ;			    #!!≈ * @CODE@ 
+LIST @-FADVL = @-FADVL ;		    #!!≈ * @CODE@ 
+LIST @A< = @A< ;				    #!!≈ * @CODE@ 
+LIST @>A = @>A ;				    #!!≈ * @CODE@ 
+LIST @ActioN> = @ActioN> ; 		    #!!≈ * @CODE@ 
+LIST @APP = @APP ;				    #!!≈ * @CODE@ 
+LIST @APP-N< = @APP-N< ;		    #!!≈ * @CODE@ 
+LIST @APP-Pron< = @APP-Pron< ;	    #!!≈ * @CODE@ 
+LIST @APP>Pron = @APP>Pron ;	    #!!≈ * @CODE@ 
+LIST @APP-Num< = @APP-Num< ;	    #!!≈ * @CODE@ 
+LIST @APP-ADVL< = @APP-ADVL< ;	    #!!≈ * @CODE@ 
+LIST @CMPND = @CMPND ; 			    #!!≈ * @CODE@ 
+LIST @COMP-CS< = @COMP-CS< ;	    #!!≈ * @CODE@ 
+LIST @HAB = @HAB ;				    #!!≈ * @CODE@ 
+LIST @INTERJ = @INTERJ ; 		    #!!≈ * @CODE@ 
+LIST @MEASURE = @MEASURE ;		    #!!≈ * @CODE@ 
+LIST @>N = @>N ;				    #!!≈ * @CODE@ 
+LIST @N< = @N< ;				    #!!≈ * @CODE@ 
+LIST @NNum> = @NNum>; 			    #!!≈ * @CODE@ 
+LIST @NumN< = @NumN<;			    #!!≈ * @CODE@ 
+LIST @>Num = @>Num;				    #!!≈ * @CODE@ 
+LIST @Num< = @Num< ;			    #!!≈ * @CODE@ 
+LIST @NPron< = @NPron< ;		    #!!≈ * @CODE@ 
+LIST @NQ< = @NQ< ; 				    #!!≈ * @CODE@ 
+LIST @NUM-PRON = @NUM-PRON ; 	    #!!≈ * @CODE@ 
+#LIST @NUMBER = @NUMBER ;		    #!!≈ * @CODE@ 
+LIST @OBJ = @OBJ ;				    #!!≈ * @CODE@ 
+LIST @<OBJ = @<OBJ ;			    #!!≈ * @CODE@ 
+LIST @OBJ> = @OBJ> ;			    #!!≈ * @CODE@ 
+LIST @OPRED = @OPRED ; 			    #!!≈ * @CODE@ 
+LIST @<OPRED = @<OPRED ;		    #!!≈ * @CODE@ 
+LIST @OPRED> = @OPRED> ;		    #!!≈ * @CODE@ 
+LIST @PCLE = @PCLE ; 			    #!!≈ * @CODE@ 
+LIST @HNOUN = @HNOUN ;			    #!!≈ * @CODE@ 
+LIST @PrcN> = @PrcN> ; 			    #!!≈ * @CODE@ 
+LIST @PronN< = @PronN< ; 		    #!!≈ * @CODE@ 
+LIST @PronN> = @PronN> ; 		    #!!≈ * @CODE@ 
+LIST @Pron< = @Pron< ;			    #!!≈ * @CODE@ 
+LIST @>Pron = @>Pron ;			    #!!≈ * @CODE@ 
+LIST @P< = @P< ;				    #!!≈ * @CODE@ 
+LIST @>P = @>P ;				    #!!≈ * @CODE@ 
+LIST @SPRED = @SPRED ; 			    #!!≈ * @CODE@ 
+LIST @<SPRED = @<SPRED ;		    #!!≈ * @CODE@ 
+LIST @SPRED> = @SPRED> ;		    #!!≈ * @CODE@ 
+LIST @SUBJ = @SUBJ ; 			    #!!≈ * @CODE@ 
+LIST @<SUBJ = @<SUBJ ;			    #!!≈ * @CODE@ 
+LIST @SUBJ> = @SUBJ> ;			    #!!≈ * @CODE@ 
+LIST @SUBJ-QH = @SUBJ-QH ;		    #!!≈ * @CODE@ 
+LIST @TITLE = @TITLE ; 			    #!!≈ * @CODE@ 
+LIST @VOC = @VOC ; 				    #!!≈ * @CODE@ 
+LIST @X = @X ;					    #!!≈ * @CODE@ 
+
+
+
+#!! ### Sets
+
+#!! #### Grammatical sets
+
+LIST CASES = Nom Acc Gen Par Loc Abl Lat Tra ;	    #!!≈ * @CODE@ 
+LIST ADVLCASE =  Loc Abl Lat Tra ;	    #!!≈ * @CODE@ 
+LIST NUMBER = Sg Du Pl ;	    #!!≈ * @CODE@ 
+LIST WORD = N A V Adv Pron Interj Num CS CC Pcle Pr Po ;	    #!!≈ * @CODE@ 
+SET REALWORD = WORD - Num - Ord ;	    #!!≈ * @CODE@ 
+SET REALWORD-NOTABBR = WORD - Num - Ord - ABBR ;	    #!!≈ * @CODE@ 
+
+
+#!! #### Sets for NP identification
+
+LIST NOT-ADV-INT-PCLE = N A Num Pron A V CC CS ;	    #!!≈ * @CODE@ 
+SET NOT-ADV = WORD - Adv ;	    #!!≈ * @CODE@ 
+SET NP-HEAD = Num OR N OR Pron ; 	    #!!≈ * @CODE@ 
+SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR (Pron Pers Gen) OR (Pron Logo Gen) OR (N Gen) OR Num OR (Cmpnd) OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR (PrfPrc @>N) OR (PrfPrc @>N) OR (PrsPrc) OR (A Ord) OR Attr ; 	    #!!≈ * @CODE@ 
+SET NP-MEMBER   = PRE-NP-HEAD OR N ; 	    #!!≈ * @CODE@ 
+SET NPNH = WORD - PRE-NP-HEAD OR (ABBR) ;    	    #!!≈ * @CODE@  NPNH  = "NOT-PRE-NP-HEAD" 
+SET NPNHA = WORD - PRE-NP-HEAD OR (ABBR) OR Adv ;   	    #!!≈ * @CODE@ 
+SET NPNHAI   = WORD - PRE-NP-HEAD - Adv - Indef ;              	    #!!≈ * @CODE@ 
+
+
+#!! #### Noun sets
+
+SET PX = PxSg1 OR PxSg2 OR PxSg3 OR PxDu1 OR PxDu2 OR PxDu3 OR PxPl1 OR PxPl2 OR PxPl3 ; 	    #!!≈ * @CODE@ 
+
+#!! #### Verb sets
+
+#!! The set REALCOPULAS is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REALCOPULAS son dovdan iežas...
+LIST REALCOPULAS = "lea" ;	    #!!≈ * @CODE@ 
+
+#!! The set COPULAS is for predicative constructions
+LIST COPULAS = REALCOPULAS ; 	    #!!≈ * @CODE@ 
+SET V-NOT-COP = V - COPULAS ;	    #!!≈ * @CODE@ 
+
+#!! Verbs that never have arguments of their own 
+
+#!! These verbs can take arguments, so they do not belong in the AUX group, 
+#!! but they are nevertheless mapped to (@+FAUXV). 
+ 
+SET AUX = COPULAS OR Neg ;	    #!!≈ * @CODE@ 
+SET VFIN = Ind OR Imprt ;	    #!!≈ * @CODE@ 
+SET VFIN-NOT-AUX = VFIN - AUX ;	    #!!≈ * @CODE@ 
+SET V-MAIN = V - COPULAS - Neg ;	    #!!≈ * @CODE@ 
+SET VFIN-NOT-NEG = VFIN - Neg ;	    #!!≈ * @CODE@ 
+SET NOT-NP = VFIN-NOT-NEG OR ConNeg OR Inf OR Pcle OR Interj OR CS ; 	    #!!≈ * @CODE@ 
+#!! The set NP-BOUNDARY is bigger. 
+
+
+
+#!! #### Boundary sets
+
+#!! Empty for now.
+
+
+
+# ============== #
+#!! ## Disambiguation rules
+# ============== #
+
+
+#!! ### BEFORE-SECTIONS
+BEFORE-SECTIONS  
+
+
+#!! **Rule: Date1** for adding Sem/Date as a tag to readings which looks like dates.
+SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
+#!! **Rule: Date2** for adding Sem/Date as a tag to readings which looks like dates.
+SUBSTITUTE:Date2 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-9][.][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
+#!! **Rule: Date3** for adding Sem/Date as a tag to readings which looks like dates.
+SUBSTITUTE:Date3 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][0-9][0-9]>"r Num) ;
+#!! **Rule: Date4** for adding Sem/Date as a tag to readings which looks like dates.
+SUBSTITUTE:Date4 (Num Sg) (Num Sg Sem/Year) TARGET ("<[1-2][0-9][0-9][0-9]>"r Num) ;
+
+
+#!! ### SECTION
+SECTION  
+
+#!! ### Cycle 0: No context around the target word
+
+#!! Still no rules written. 
+
+# Removing non-lexicalised forms when lexicalised.
+#REMOVE:PassS (Der/PassS) ; # ikke bra
+
+
+#!! ### Cycle 1: Local context around the target word
+
+#!! **Rule: Attr** removes Pos and keeps Attr for A in front of A or N.
+REMOVE:Attr A + Pos IF (1 A OR N);
+
+#!! **Rule: Pos** removes Attr and keeps Pos for A if no .
+REMOVE:Pos A + Attr IF (0 Pos)(NOT 1 A OR N)(NOT 1 CC LINK 1 A);
+
+
+
+#!! ### Cycle 2: Slightly less local context
+
+#!! Still no rules written. 
+
+
+#!! ### Cycle 3: Global disambiguation 
+#!! Still no rules written. 
+#!! ### Cycle 4: Syntactic disambiguation 
+#!! Still no rules written. 
+#!! ### Cycle 5: Post-syntactic morphological disambiguation
+#!! Still no rules written. 
+
+
+

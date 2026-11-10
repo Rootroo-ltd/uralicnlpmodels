@@ -1,0 +1,791 @@
+
+#!! # Komi disambiguator
+
+# ============== #
+#!! ## Delimiters 
+# ============== #
+
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>" sent ;
+#!! Sentence delimiters are: "<.>" "<!>" "<?>" "<...>" "<¶>" sent
+
+#PARENTHESES = "<$(>" "<$)>" "<$[>" "<$]>" "<${>" "<$}>" "<$«>" "<$»>" ;
+
+# ================= #
+#!! ## Tags and sets 
+# ================= #
+
+SETS
+
+# I define end of clause and beginning of clause in a way so that the file
+# may be read both by the CG-2 and the vislcg formalisms.
+
+#!! ### Beginning and end of sentence	
+LIST BOS = (>>>) (<s>);  #!! BOS
+LIST EOS = (<<<) (</s>); #!! EOS
+
+#!! ### Miscellanous
+
+LIST CmpTest = CmpTest ; #!! CmpTest
+LIST Err = Err ;  #!! Err
+LIST Err/Dial = Err/Dial ; #!! вӧлі Sg3
+LIST Err/Orth-no-paragogic-j = Err/Orth-no-paragogic-j ;
+LIST Err/Orth = Err/Orth Err/Orth-no-paragogic-j ;
+
+#!! ### Parts of speech tags
+LIST N = N ; #!! N
+LIST V = V ; #!! V
+LIST A = A ; #!! A
+LIST Adv = Adv ; #!! Adv
+LIST CC = CC ; #!! CC
+LIST CS = CS ; #!! CS
+LIST Interj = Interj interj ij; #!! Inter
+LIST Pron = Pron ; #!! Pron
+LIST Num = Num ; #!! Num
+LIST Pcle = Pcle ; #!! Pcle
+LIST Clt = Clt ; #!! Clt
+LIST Po = Po ; #!! Po
+LIST Dem = Dem ; #!! Dem
+LIST Deg = Deg ; #!! Deg
+LIST Qnt = Qnt ; #!! Qnt
+LIST Prop = Prop ; #!! Prop
+LIST WORD = N V A Adv CC CS Interj Pron Num Pcle Clt Po ;
+SET NotPO = WORD - Po ;
+
+
+#!! ### Derivation tags
+LIST Ex/A = Ex/A ; #!! Ex/A (former adj)
+LIST Ex/N = Ex/N ; #!! Ex/N
+LIST Ex/Num = Ex/Num ; #!! Ex/Num
+LIST Ex/V = Ex/V ; #!! Ex/V
+LIST Ex/WORD = Ex/N Ex/V Ex/A Ex/Num ; #!! Ex/WORD
+LIST VCar = VCar ; #!! VCar
+LIST Der = Der ;
+LIST Der/A = Der/A ;
+LIST Der/ӧмӧн = Der/ӧмӧн ;
+LIST DerTag = Der Der/Ин Der/NomAct Der/MWN Der/Patr Der/И Der/а Der/ал Der/ась Der/выв Der/джык Der/дор Der/иг Der/кежлӧ Der/кодь Der/коста Der/кості Der/л Der/ла Der/ладор Der/лун Der/лы Der/лывлы Der/мед Der/моз Der/мысь Der/мысьт Der/мӧн Der/мӧнъя Der/овт Der/ӧмӧн Der/сор Der/сь Der/сьы Der/сюрӧ Der/тыр Der/тырйи Der/тыръя Der/тӧдз Der/тӧм Der/чы Der/чӧж Der/ывлы Der/ысь Der/ышт Der/ӧм Der/увса ; #!! DerTag
+LIST AspDerTag = Der/ал Der/ась Der/л Der/лы Der/лывлы Der/овт Der/сь Der/сьы Der/чы Der/ывлы Der/ышт ; #!! AspDerTag
+
+
+
+#!! ### Verbal categories
+LIST Prs = Prs ; #!! Prs
+LIST Fut = Fut ; #!! Fut
+LIST Fut1 = Fut1 ; #!! Fut1
+LIST Imprt = Imprt ; #!! Imprt
+LIST Prt1 = Prt1 ; #!! Prt1
+LIST Prt2 = Prt2 ; #!! Prt2
+LIST Prf = Prf ;  #!! Prf
+LIST PrfIpf = PrfIpf ; #!! PrfIpf
+LIST HstPrf = HstPrf ; #!! HstPrf
+LIST PluPrf = PluPrf ; #!! PluPrf
+LIST HstPluPrf = HstPluPrf ; #!! HstPluPrf
+LIST Ind = Ind ind ; #!! Ind
+LIST Imp = Imp ;  #!! Imp
+LIST Cond = Cond cond ; #!! Cond
+LIST Opt = Opt opt ; #!! Opt
+LIST IV = IV ;
+LIST TV = TV ;
+
+LIST Sg1 = Sg1 ; #!! Sg1
+LIST Sg2 = Sg2 ; #!! Sg2
+LIST Sg3 = Sg3 ; #!! ...
+LIST Pl1 = Pl1 ; 
+LIST Pl2 = Pl2 ; 
+LIST Pl3 = Pl3 ; 
+LIST Inf = Inf ; 
+LIST Pos = Pos ; 
+LIST Neg = Neg neg ; 
+LIST ConNeg = ConNeg conneg; 
+
+LIST V-jylysj = "висьтавны" "гижны" "мойдны" "мӧвпавны" "пасйыны" "сёрнитны" "тӧдны" "шуны" ;
+
+LIST Months = "тӧв шӧр" "урасьӧм" "рака" "кос му" "ода-кора" "лӧддза-номъя" "сора" "моз" "кӧч" "йирым" "вӧльгым" "ӧшым" "январ" "январь" "март" "апрель" "май" "июнь" "июль" "август" "сентябр" "сентябрь" "октябр" "октябрь" "ноябр" "ноябрь" "декабр" "декабрь" ;
+
+#!! Nominal categories
+LIST Sg = Sg sg ; #!! Sg
+LIST Pl = Pl pl ; #!! Pl
+LIST Nom = Nom nom ; #!! Nom
+LIST Gen = Gen gen ; #!! Gen
+LIST Abl = Abl abl ; #!! Abl
+LIST Dat = Dat dat ; #!! Dat
+LIST Com = Com com ; #!! Com 
+LIST Cns = Cns cns ; #!! Cns
+LIST Acc = Acc acc ; #!! ...
+LIST Ins = Ins ins ; 
+LIST Ine = Ine ine ; 
+LIST Ill = Ill ill ; 
+
+LIST Ela = Ela ela ; 
+LIST Car = Car car ; 
+LIST Egr = Egr egr ; 
+LIST Tra = Tra tra ; 
+
+LIST Apr = Apr apr ; 
+LIST Ter = Ter ter ; 
+LIST Abe = Abe abe ; 
+LIST Prl = Prl prl ; 
+LIST Prp = Prp prp ; #син синма 
+LIST Cmpl = Cmpl ;
+LIST Abs = Abs ;
+LIST Attr = Attr ;
+LIST Relat = Relat ;
+
+LIST HabObj = HabObj ; 
+LIST Instr = Instr ; 
+LIST Superl = Superl ; 
+LIST Comp = Comp ; 
+
+LIST Pers = Pers ;
+LIST Refl = Refl ; 
+LIST Rel = Rel ; 
+LIST Interr = Interr ; 
+LIST Recipr = Recipr ; 
+
+LIST PxSg1 = PxSg1 ; 
+LIST PxSg2 = PxSg2 ; 
+LIST PxSg3 = PxSg3 ; 
+LIST PxPl1 = PxPl1 ; 
+LIST PxPl2 = PxPl2 ; 
+LIST PxPl3 = PxPl3 ; 
+
+LIST PxTag = PxSg1 PxSg2 PxSg3 PxPl1 PxPl2 PxPl3 ;
+SET NotPxTagN = N - PxTag ;
+
+LIST Card = Card ; 
+
+LIST Coll = Coll ; 
+LIST Comp = Comp ; 
+
+LIST Ord = Ord ; 
+LIST Temp = Temp ; 
+
+LIST AN = AN ; 
+LIST ANA = ANA ; 
+LIST ANAA = ANAA ; 
+LIST CHOZH = CHOZH ; 
+LIST IG = IG ; 
+
+LIST Instr = Instr ; 
+
+LIST KEZHLO = KEZHLO ; 
+LIST MOZ = MOZ ; 
+LIST MYS = MYS ; 
+LIST MYST = MYST ; 
+LIST OM = OM ; 
+
+LIST SOR = SOR ; 
+LIST TODZ = TODZ ; 
+LIST TYR = TYR ; 
+LIST TYRJI = TYRJI ; 
+
+LIST CLB = CLB ; 
+
+LIST ABBR = ABBR ;
+LIST LEFT = LEFT ; 
+LIST RIGHT = RIGHT ; 
+LIST COMMA = "," ;
+
+LIST PUNCT = PUNCT ;
+
+LIST FirstName = Sem/Mal Sem/Fem ;
+LIST Surname = Sem/Sur ;
+LIST Patronym = Sem/Patr ;
+LIST Sem/Plc = Sem/Plc ;
+
+LIST LangSource = EOLang/KOM EOLang/KPV ;
+
+LIST Clt/сӧ = Clt/сӧ ;
+LIST Der/MWN = Der/MWN ;
+LIST Der/Patr = Der/Patr ;
+LIST Der/са = Der/са ;
+LIST Der/NomAct = Der/NomAct ;
+LIST Der/ProprietiveMod = Der/ProprietiveMod ;
+
+LIST CASE = Nom Gen Abl Dat Com Cns Acc Ins Ine Ill Ela Car Egr Tra Apr Ter Abe Prl ;
+SET OBLCASE = CASE - Nom ;
+SET NONCORECASE = CASE - Nom - Acc ;
+LIST PrsPtc = PrsPtc ;
+LIST PrsPrc = PrsPrc ;
+LIST PastPtc = PastPtc ;
+LIST Noun1 = Noun1 ;
+LIST ActPrsPtc = ActPrsPtc ;
+LIST NomAct = Der/NomAct ;
+LIST Cop = Cop ;
+LIST ACR = ACR ; # acronym
+
+#!! ### Verb sets
+LIST VNEG = "ог" "он" "оз" "огӧ" "огӧй" "онӧ" "онӧй" "эг" "эн" "эз" "эгӧ" "эгӧй" "энӧ" "энӧй" ; #!! VNEG (all Neg verbs)
+
+SET VFIN = Ind | Cond | Opt ; #!! VFIN
+
+
+LIST ASKI = "аски" "понедельникӧ" "вторникӧ" "середаӧ" "четвергӧ" "пекничаӧ" "субӧтаӧ" "вежалунӧ" "регыд" "аскомысь"; #!! ASKI (tomorrow set)
+
+LIST VOELI = "вӧвны" ;
+
+LIST NOT-PRL = "Конӧд" "Серӧд" "анӧд" "бауӧд" "вӧтӧд" "чайӧд" "болльӧд" "бусӧд" "санӧд" "гыӧд" "кӧкӧд" "кӧмӧд" ; #!! NOT-PRL (have no homograph Prolative pairs set)
+# Keep words that will not take Prl analysis
+
+# CHECK THESE: "бурдӧд" "бӧбӧд" "вашӧд" "вежӧд" "везйӧд" "весӧд" "видзӧд" "висьтӧд" "висьӧд"
+# "вожӧд" "войтӧд" "ворсӧд" "восӧд" "вужйӧд" "вӧзьӧд" "вӧньӧд" "гаддьӧд" "гажӧд" "гатшӧд" "гачӧд"
+# "гежӧд" "гожйӧд" "гозйӧд" "гольӧд" "грымӧд" "гугӧд" "гыжйӧд" "гымӧд" "гычӧд" "дарйӧд" "джуӧд"
+# "джынйӧд" "дзирдӧд" "дзорӧд" "дзӧрӧд" "домӧд" "донӧд" "дышӧд" "дізьӧд" "дӧрӧмӧд" "зарниӧд" "зильӧд"
+# "зёльӧд" "зӧркӧд" "инӧд" "исӧд" "йиркӧд" "йирӧд" "йӧзӧд" "кажӧд" "казакӧд" "казьтӧд" "калькӧд" "камӧд"
+# "качӧд" "кежӧд" "кельӧд" "кизьӧд" "кисьтӧд" "клопӧд" "кокӧд" "колльӧд" "комиӧд" "конӧд" "крапӧд"
+# "кудзӧд" "курӧд" "кушӧд" "кыйӧд" "кыпӧд" "кырымӧд" "кышӧд" "кыӧд" "кӧдзӧд" "кӧйдысӧд"
+# "кӧртӧд" "кӧшельӧд" "лайкӧд" "лемӧд" "личӧд" "лолӧд" "лэбӧд" "люкӧд" "лякӧд" "лёкӧд" "лӧбӧд"
+# "лӧгӧд" "лӧсьӧд" "мальӧд" "матӧд" "мездӧд" "мичӧд" "мыджӧд" "мылькйӧд" "мылӧд" "мырдӧд" "мытшӧд"
+# "мӧскӧд" "нагруникӧд" "нимлунӧд" "нимӧд" "нопйӧд" "нурйӧд" "нырӧд" "някӧд" "нёньӧд" "окӧд" "орӧд"
+# "пагӧд" "пазӧд" "пактӧд" "пакӧд" "пальтоӧд" "паньӧд" "пасьӧд" "пимиӧд" "позйӧд" "пукӧд" "пуӧд"
+# "пытшкӧд" "пӧрӧд" "пӧсьӧд" "разӧд" "резьӧд" "ризӧд" "розьӧд" "рочӧд" "рузумӧд" "руӧд" "сапӧгӧд"
+# "серӧд" "сибӧд" "сикӧтшӧд" "сирӧд" "сутшӧд" "суӧд" "сынӧд" "сёйӧд" "сёйӧд-юӧд" "сімӧд" "сӧдзӧд"
+# "тобокиӧд" "торйӧд" "торкӧд" "тотшӧд" "триньӧд" "тутӧд" "тшапӧд" "тшукӧд" "тшыгйӧд" "тшынӧд" "тшӧгӧд" "тыӧд" "тэськӧд" "тэськӧд" "тюкӧд" "тёпӧд" "тівкӧд" "тӧлӧд" "увтӧд" "уджӧд" "ужынӧд" "умӧд" "урӧд" "утйӧд" "чериӧд" "черӧд" "чутӧд" "чышъянӧд" "чӧскӧд" "шалльӧд" "шапкаӧд" "шаркӧд" "шарпӧд" "шарӧд" "шерӧд" "шлапӧд" "шлопӧд" "шляпӧд" "шмотӧд" "шогӧд" "шудӧд" "шульӧд" "шыльӧд" "шынельӧд" "шырйӧд" "шӧрвыйӧд" "шӧрӧд" "эжӧд" "юкӧд" "юркышӧд" "юрӧд" "юсьӧд" "янӧд" "ӧдйӧд"
+
+LIST KPVACRO = "ААНИИ" "АвтоВАЗ" "АККОР" "АН" "АМР" "АО" "АПК" "АПП" "АсПУр" "АСРОС" "АССР" "АТК" "АТО" "АТОС" "АТП" "АТС" "АУ" "АФУН" "БАМ" "БАО" "БЕАР" "БКП" "БМВ" "БМП" "БНР" "БРИЗ" "БРИКС" "БССР" "БТИ" "БТР" "ВАД" "ВАДА" "ВАЗ" "ВАИ" "ВАК" "ВАСХНИЛ" "ВАСХНИИЛ" "ВВК" "ВВС" "ВГИК" "ВГТРК" "ВДВ" "ВДК" "ВДНХ" "ВДПО" "ВЗУ" "ВИА" "ВКСШ" "ВЛКСМ" "ВМП" "ВМС" "ВМФ" "ВНИГРИ" "ВНИИ" "ВОБ" "ВОВ" "ВОЗ" "ВОИ" "ВОИР" "ВООПИК" "ВОХР" "ВСНХ" "ВСУ" "ВСХВ" "ВТБ" "ВТО" "ВЦИОМ" "ВЦИОМС" "ВУЗ" "ВЦИК" "ВЦСПС" "ВЧК" "ГАИ" "ГАУ" "ГБУ" "ГДР" "ГИБДД" "ГИЗ" "ГИМС" "ГИТИС" "ГИХЛ" "ГКЧП" "ГлавПУР" "ГОМ" "ГПС" "ГПТУ" "ГПУ" "ГРП" "ГРПП" "ГРУ" "ГРЭС" "ГСВГ" "ГСМ" "ГСО" "ГТО" "ГТРК" "ГУ" "ГУЛАГ" "ГУП" "ГУФСИН" "ГЭС" "ДВП" "ДЗОТ" "ДИНА" "ДИП" "ДКБ" "ДНД" "ДНР" "ДНТ" "ДОСААФ" "ДПД" "ДПМК" "ДПП" "ДПС" "ДРБ" "ДРВ" "ДРСУ" "ДСК" "ДСО" "ДСУ" "ДТ" "ДХС" "ДЭУ" "ДЮКФП" "ДЮСШ" "ДЮФКП" "ДЮШС" "ЕС" "ЕГЭ" "ЕТС" "ЖКО" "ЖКХ" "ЖЭС" "ЖЭУ" "ЗАГС" "ЗАО" "ЗЖБИ" "ЗИЛ" "ИВС" "ИГИЛ" "ИГИЛС" "ИК" "ИКП" "ИМЦП" "ИНО" "ИПК" "ИПККНО" "ИТК" "ИТР" "ИУУ" "ИЯЛИ" "КамАЗ" "КАМАЗ" "КАПП" "КАССР" "КБО" "КВЖД" "КВН" "КВЧ" "КГБ" "КГПИ" "КИМ" "КИП" "КИППТ" "КИПТ" "КИР" "ККОВ" "КМЕТ" "КНВ" "КНГ" "КНДР" "КНР" "КНЦ" "КНШ" "КП" "КПГ" "КПДН" "КПЗ" "КПП" "КПРФ" "КПСС" "КПТ" "КПУ" "КР" "КРАГСиУ" "КРАПТ" "КРБ" "КРИРО" "КРИРОиПК" "КРО" "КРОО" "КРТК" "КРЦДОД" "КТП" "КФХ" "КЭБ" "ЛГУ" "ЛДК" "ЛДПР" "ЛЗУ" "ЛНР" "ЛПК" "ЛПО" "ЛПХ" "ЛСГ" "ЛТО" "ЛУАД" "ЛУКОЙЛ" "ЛФК" "МА" "МАГАТЭ" "МАЗ" "МАФУН" "МВД" "МВФ" "МГБ" "МГУ" "МЖКХ" "МИД" "МКС" "ММС" "МОД" "МОК" "МОУ" "МП" "МПС" "МР" "МРСК" "МСНК" "МТС" "МТФ" "МУК" "МУП" "МФЦ" "МХАТ" "МЧС" "МЭИ" "НА" "НАКЮ" "НАО" "НАСА" "НАТО" "НВХО" "НГДУ" "НИИ" "НИИУ" "НИЛ" "НИПТИ" "НКВД" "НКГБ" "НКСД" "НКФ" "НЛО" "НПЗ" "НРБ" "НСШ" "НТВ" "НТР" "НХЛ" "ОАО" "ОАР" "ОАЭ" "ОблОНО" "ОбОНО" "ОБСЕ" "ОБЭП" "ОБХСС" "ОВД" "ОВС" "ОГИПТАД" "ОГПН" "ОГПУ" "ОДВФ" "ОИКК" "ОК" "ОКК-РКИ" "ОЛП" "ОМВД" "ОМОН" "ОМСН" "ОНО" "ОНФ" "ООН" "ООО" "ОРС" "ОСВОД" "ОТК" "ОТФ" "ОУН" "ОУН-УПА" "ОУПД" "ПАК" "ПАО" "ПАТП" "ПВО" "ПДД" "ПечорНИУИ" "ПЛ" "ПМК" "ПО" "ППС" "ПСК" "ПТО" "ПТУ" "ПУ" "ПУРП" "ПЭВМ" "ПЭС" "РАЕН" "РАМН" "РАН" "РАПО" "РАПП" "РАФУЖ" "РВА" "РГД" "РГПУ" "РГУ" "РДК" "РДЮСШ" "РЖД" "РИА" "РИК" "РИПКРО" "РК" "РКИ" "РККА" "РКП" "РКСМ" "РКЦ" "РМЗ" "РММ" "РМЦ" "РНА" "РО" "РОА" "РОВД" "РОНО" "РПД" "РПП" "РПЦ" "РРМЦ" "РСДПР" "РСДРП" "РСТ" "РСУ" "РСФРС" "РСФР" "РСФСР" "РТ" "РТПЦ" "РТС" "РУДН" "РУНО" "РФ" "РЭБ" "РЭС" "РЭУ" "СБЕР" "СБУ" "СГУ" "СД" "СЕПГ" "СЗФО" "СИЗО" "СКА" "СКУ" "СЛВЗ" "СЛДК" "СЛИ" "СЛПК" "СМЕРШ" "СМЗ" "СМИ" "СМУ" "СНГ" "СНК" "СОБР" "СОФИН" "СОЦ" "СП" "СПб" "СПбГУ" "СПбГУСЭ" "СПК" "СПОГАТ" "СПТУ" "СС" "ССО" "ССП" "ССР" "СССР" "СТО" "СТФ" "СТЭК" "СУ" "СУАЛ" "СУС" "СЦБТ" "США" "СыктГУ" "СЭВ" "ТАП" "ТАСС" "ТАССР" "ТГУ" "ТИК" "ТКЗХ" "ТКУ" "ТНТ" "ТОЗ" "ТОО" "ТОС" "ТПК" "ТПП" "ТСЖ" "ТУ" "ТЭФИ" "ТЭЦ" "УАЗ" "УАССР" "УБОП" "УВД" "УВД-ОВД" "УГБ" "УГИБДД" "УГТУ" "УдГУ" "УЖД" "УЗИ" "УИИ" "УИК" "УИН" "УКОМ" "УКП" "УКС" "УМВД" "УНА-УПА" "УНКВД" "УОНО" "УПА" "УПН" "УР" "УРБ" "УРС" "УСЕВЛОН" "УССР" "УФМС" "УФПС" "УФСБ" "УФСИН" "УФССП" "УЧК" "ФАП" "ФГУ" "ФГУП" "ФЗД" "ФЗО" "ФЗУ" "ФИФА" "ФЛГР" "ФНС" "ФОМС" "ФРГ" "ФСБ" "ФСКН" "ФССП" "ЦБ" "ЦБТИ" "ЦВР" "ЦГА" "ЦДТ" "ЦЗН" "ЦИК" "ЦК" "ЦНИИМЭ" "ЦРБ" "ЦРМ" "ЦРУ" "ЦСКА" "ЦСУ" "ЦУМ" "ЧК" "ЧП" "ШКМ" "ШСУ" "ХАД" "ЧАЭС" "ЧГТРК" "ЧОН" "ЧОС" "ЧССР" "ШВК" "ШИК" "ЭВМ" "ЭССР" "ЮАР" "ЮПС" "ЮЭС" "ЮКОС" "ЮНЕСКО" ; # acronyms from Komi-language sources
+
+LIST IV-WITHSg1Sg3-AMB = "аттьӧавны" "баксыны" "бердны" "босьтны" "босьтчыны" "бруткысьны" "быдтыны" "бырлыны" "бырны" "бырӧдны" "бӧрйывны" "вадзмунны" "вайӧдлыны" "варовитны" "вашмунны" "вежсьыны" "велавны" "велӧдлыны" "венлыны" "вербуйтны" "веськавлыны" "веськавны" "веськӧдчыны" "весьӧпӧрны" "ветлывлыны" "ветлыны" "ветлысьны" "ветлӧдчыны" "взорвитчыны" "виавны" "видлавны" "визьмунны" "вины" "висьтавны" "висьтасьны" "виччысьны" "виявны" "водзсасьны" "вожавны" "волывлыны" "волыны" "вольсавлыны" "воны" "ворслыны" "ворсны" "воссьыны" "вотчыны" "вошавны" "вошлывлыны" "вошлыны" "вошны" "вошсьыны" "вуджны" "вуджӧртны" "вузавны" "вунлыны" "вунны" "вывлыны" "вӧвлывлыны" "вӧвлыны" "вӧвны" "вӧдитчыны" "вӧзйыны" "вӧзйысьны" "вӧйлыны" "вӧйны" "вӧлавны" "вӧчлыны" "вӧявны" "гаджмунны" "гажмыны" "гажӧдчывлыны" "герч-герчмунны" "гизьмунны" "гиль-гольмунны" "гольмунны" "гольсмунны" "грымакывны" "грымгысьны" "гудрасьны" "гудыртчыны" "гузьгысьны" "гузьмунны" "гульс-гольсмунны" "гусявлыны" "гызьмунны" "гылавлыны" "гылавны" "гыпйӧдлыны" "гыпмунны" "гӧгрӧсмыны" "гӧгӧрвоӧдны" "дасьтыны" "джаджъясьны" "дженьдӧдны" "джӧмдыны" "дзебсясьны" "дзенавлыны" "дзизгыны" "дзиньмунны" "дзувъявны" "дзузкнитны" "дзуммунны" "дзурсмунны" "дольны" "дрӧбавны" "дрӧгмунны" "дугӧдны" "дӧнзьыны" "жбыръявны" "жеръявны" "жиньмунны" "жмотмунны" "жугавны" "жугӧдны" "зиль-зёльмунны" "зилькмунны" "зильмунны" "зиньмунны" "зурасьны" "зутшмунны" "зэлавны" "зялькмунны" "зятмунны" "зёлькмунны" "зёлькнитны" "зёльмунны" "зӧркмунны" "исковтны" "йиркмунны" "казьтывлыны" "калькавны" "калькмунны" "катовмунны" "килькувны" "киссьыны" "киськавны" "клёнмунны" "ковны" "кольлывлыны" "кольлыны" "кольны" "колявны" "корлыны" "корны" "корсьны" "корсьысьны" "котыртлыны" "крапкысьны" "крестасьны" "кувлыны" "кувны" "куйлыны" "кулавны" "кусавны" "куслыны" "кусны" "кутлысьны" "кутны" "кушмӧдны" "кывзыны" "кывны" "кыйсьыны" "кылавны" "кынмавлыны" "кыпмунны" "кыптывлыны" "кыскасьны" "кыскысьны" "кыссьыны" "кытшлавны" "лайкмунны" "ланьтны" "ланьтӧдчыны" "лигышмунны" "личавлыны" "личавны" "личмунны" "лолыны" "лоны" "лотшмунны" "луп-лапмунлыны" "лыблыны" "лыбны" "лэбавны" "лэбзьывны" "лэбзьыны" "лэбны" "лэдзны" "лэптавны" "люнявны" "ляпмунны" "лясмунны" "лёсмунны" "лётавны" "лётмунны" "лӧсьӧдавлыны" "лӧсявны" "манитчыны" "маскируйтны" "могмӧдсьыны" "мунлыны" "мунны" "мучитчыны" "мынлыны" "мынны" "мырсьыны" "мӧвпыштны" "мӧдны" "нимӧдны" "нуӧдны" "нюжавны" "нюжмунны" "нюжӧдны" "нюммунны" "овлыны" "овны" "ойдыны" "орны" "отсасьлыны" "отсасьны" "павмунны" "пазавны" "пазьмунны" "паныдавны" "панясьны" "пасйыссьыны" "паськавлыны" "паськавны" "пасьмунлыны" "пасьмунны" "песлӧдлыны" "петавны" "петкӧдлыны" "петкӧдчывны" "петлыны" "петны" "пинясьны" "плавгысьлыны" "пласьтмунны" "повзьыны" "повлыны" "подзавны" "позявны" "помасьны" "потны" "потшны" "праздничайтлыны" "пракмунны" "прысьмунны" "пуксьыны" "пуктыны" "пусьыны" "путкыльтчыны" "пывсьыны" "пыльсмунлыны" "пыльсмунны" "пыркмунлыны" "пыркмунны" "пырны" "пырӧдчыны" "пышйыны" "пӧдласьны" "пӧжавлыны" "пӧкаитчыны" "пӧрлыны" "пӧрны" "разавлыны" "разавны" "разоружитчыны" "ратшмунны" "ретшмунны" "ротшмунны" "рудзмунны" "рутш-ратшмунны" "рутшмунны" "сатшны" "саявны" "семдыны" "сералыштны" "серӧктыны" "сетлыны" "сетны" "сибдыны" "сины" "содны" "сотлыны" "сотны" "сувтӧдны" "судитлыны" "сулавны" "суркмунны" "сурсмунны" "сывны" "сыркмунлыны" "сыркмунны" "сырмунны" "сьывлыны" "сьывны" "сюв-сявмунлыны" "сюв-сявмунны" "сюравлыны" "сюравны" "сюрлывлыны" "сюрлыны" "сюрны" "сявкйыны" "сявкмунлыны" "сявкмунны" "сявмунлыны" "сявмунны" "сяркмунны" "сярмунлыны" "сярмунны" "сёйны" "сёрнитны" "сӧвмыны" "сӧвмӧдны" "таркмунлыны" "таркмунны" "тармунны" "тешитчыны" "тольсмунны" "топавны" "торйӧдлыны" "торъявлыны" "торъявны" "трачмунлыны" "троньмунлыны" "троньмунны" "тшапкыны" "тшукны" "тшыкны" "тшӧкмунлыны" "тшӧкмунны" "тыдавны" "тырлыны" "тырмыны" "тырны" "тыртны" "тышкасьны" "тэсны" "тіравны" "тірмунлыны" "тірмунны" "тірны" "тӧвзьыны" "тӧдмавны" "тӧдмасьлыны" "тӧдмасьны" "тӧрны" "уджавны" "удитны" "узьмӧдчыны" "узьны" "унмовсьыны" "усйысьны" "усурмунлыны" "усырмунны" "усьлывлыны" "усьлыны" "усьны" "усявны" "формируйтлыны" "чегны" "чермунны" "чеччавны" "чинны" "чипсасьны" "чирксыны" "чирмунны" "чишмунны" "чошмунны" "чужлыны" "чужны" "чукрасьны" "чуксавны" "чуксасьны" "чуктыны" "чукырмунны" "чукӧртны" "чур-чермунны" "чурмунны" "чурскыны" "чушмунны" "чӧвны" "чӧвтны" "чӧвусьлыны" "чӧвусьлыныбердны" "чӧсмасьны" "шай-паймунлыны" "шай-паймунны" "шайпаймунны" "шармунны" "шарсмунны" "шатовмунны" "швачкысьлыны" "шедлыны" "шедны" "шковгыны" "шпыньмунны" "шулывлыны" "шур-шармунны" "шусьыны" "шылявны" "шӧйӧвошлыны" "шӧйӧвошны" "ыззьӧдны" "ызмунны" "ылавлыны" "ылавны" "ыпмунлыны" "ырсмунны" "ыстывлыны" "ыстывны" "ыстыны" "эрмунны" "югмунлыны" "югмунны" "юксьыны" "юкӧртны" "юрмунлыны" "юрмунны" "юӧртны" "ӧвтны" "ӧткажитчыны" "ӧтлаасьны" "ӧшавны" "ӧшйыны" "ӧшӧдлыны" ; # These verbs may have Sg1 vs Sg3 ambiguity.
+
+LIST KINPXSG1 = "ай" "ай-мам" "бать" "бать-мам" "вок" "мам" ;# relatives with PxSg1
+
+
+LIST SYV = ("сыв" N Sg) ;
+
+SET NOTACRO = ACR - KPVACRO ;
+SET SYVNONCORE = SYV - Nom - Acc ;# for work with сійӧ
+# Complementary sets
+
+SET Non-Pcle = WORD - Pcle ;
+SET NOMINAL = N | Pron ;
+SET Non-VFIN = WORD - V | V - VFIN ;
+
+
+########################                  #########################
+########################                  #########################
+                        # disambiguation #
+########################                  #########################
+########################                  #########################
+
+
+SECTION
+
+SUBSTITUTE (Hom1) (*) TARGET (*) ;
+SUBSTITUTE (Hom2) (*) TARGET (*) ;
+SUBSTITUTE (Hom3) (*) TARGET (*) ;
+SUBSTITUTE (Hom4) (*) TARGET (*) ;
+#
+SUBSTITUTE:RemoveKin (Sem/Kin) (*) TARGET (*) ;
+SUBSTITUTE:RemoveSur (Sem/Sur) (*) TARGET (*) ;
+SUBSTITUTE:RemoveMal (Sem/Mal) (*) TARGET (*) ;
+SUBSTITUTE:RemoveFem (Sem/Fem) (*) TARGET (*) ;
+#
+SUBSTITUTE:RemoveKOM (EOLang/KOM) (*) TARGET (*) ;
+SUBSTITUTE:RemoveKPV (EOLang/KPV) (*) TARGET (*) ;
+#
+#SUBSTITUTE:RemoveIV (IV) (*) TARGET (*) ;
+#SUBSTITUTE:RemoveTV (TV) (*) TARGET (*) ; 2026-04-20 transitivity might be a good alternative to the so-called reflexive, which is not a reflexive but merely a means of reducing the number of verbal arguments.
+
+#REMOVE:ErrDial Err/Dial IF (0 VOELI) ;
+SUBSTITUTE (<W:0.0>) (<W:1.0>) TARGET Err/Dial ;
+
+#SUBSTITUTE (<W:0.0>) (<W:1.0>) TARGET (N Sg Nom PxSg1) IF (0 Non-KIN) ;
+SUBSTITUTE:WeightNonKin (<W:0.0>) (<W:1.0>) TARGET (N Sg Nom PxSg1) IF (NOT 0 KINPXSG1) ;
+# 
+
+SUBSTITUTE (<W:0.0>) (<W:1.0>) TARGET NOTACRO ;
+
+SUBSTITUTE:WeightSyvWhenSgEla  (<W:0.0>) (<W:1.0>) TARGET ("сыв" N Sg Ela);
+# сылысь
+
+SUBSTITUTE:WeightSyvWhenSgEla  (<W:0.0>) (<W:1.0>) TARGET (Err/Orth);
+
+SUBSTITUTE:WeightPrt2Sg1  (<W:0.0>) (<W:1.0>) TARGET (Prt2 Sg1) OR (Prt2 Pl1) ;# This helps with the Alphabetical random
+# for preference of Sg3 reading
+
+#2024-06-11 not sure why this is here, Jaska
+SUBSTITUTE:negv_to_aux (V Neg) (Aux Neg) TARGET (V Neg) IF (1 (ConNeg)) ;
+#!! * **NoDerIfPossible** removes all derivations
+
+
+#!! * **Dem** selects Dem if N Nom to the right
+SELECT:Dem Dem IF (0 Dem)(1 N + Nom);
+
+#SELECT:AbsIfN Abs IF (1 N);
+#SELECT:AttrIfN Attr IF (1 N);
+
+# Early, word-internal rules
+
+REMOVE:CmpTst CmpTest IF (NOT 1 N);
+SELECT:CmpTst2 CmpTest ; # Kill'em all
+
+REMOVE Der/ProprietiveMod IF (0 N + Prop + Sg + Der + Der/ProprietiveMod + A) ;
+
+REMOVE Nom IF (0 Nom + Clt + Clt/сӧ);
+# кывсӧ пыдісянь гӧгӧрвоысьяс
+
+REMOVE:ImprtCltso Imprt (0 Imprt + Sg2 + Clt + Clt/сӧ);
+
+REMOVE:notPrl Prl IF (0 NOT-PRL) ;
+
+REMOVE ACR IF (0 (N Sg) OR (N Pl));
+
+# Prop in the middle of a sentence
+# ================================
+
+# too aggressive! 2021-01-07 jaska
+# Купеч каяс, а мужик и [пырас].
+#SELECT:PropInSentence Prop IF (NOT -1 CLB);
+
+# CC or Pcle
+# ==========
+
+#REMOVE Pcle IF (-1 BOS)(0 CC); # ?
+#!! * **NoFinalCC** removes CC if competing Pcle and sentence-final
+REMOVE:NoFinalCC CC IF (1 EOS)(0 Pcle);
+#!! * **NoABBR** removes ABBR for competing CC
+REMOVE:NoABBR ABBR IF (0 CC)(NOT 1 Prop);
+
+
+SELECT Pcle IF (-1 CLB) (0 ("тыдалӧ")) (1 COMMA);
+SELECT Pcle IF (-1 BOS) (0 ("тыдалӧ")) (1 COMMA);
+SELECT Pcle IF (0 ("тыдалӧ")) (-1 COMMA) (1 EOS);
+SELECT Pcle IF (-1 BOS) (0 ("шуам")) ;
+SELECT Pcle IF (-1 COMMA) (0 ("шуам")) (1 COMMA);
+SELECT Pcle IF (-1 CLB) (0 ("кӧнкӧ")) (1 CLB);
+SELECT Pcle IF (-1 BOS) (0 ("кӧнкӧ")) (1 CLB);
+SELECT CC IF (-1 COMMA) (0 ("но")) ;
+SELECT Pcle IF (-1 BOS) (0 ("но")) ;
+REMOVE Pcle IF (-1 COMMA) (0 ("но"));
+SELECT CC IF (-1 COMMA) (0 ("а"));
+REMOVE Pcle IF (-1 COMMA) (0 ("и"));
+
+SELECT CC IF (-1 A)(1 A) ;
+SELECT CC IF (-1 A)(1 Ins)(2 A) ;
+SELECT CC IF (-1 V)(1 V) ;
+SELECT CC IF (-1 N)(1 N) ;
+
+# Derivations
+# ==========
+REMOVE (Der/MWN N Nom);
+REMOVE Der/са IF (0 ("<(.*)са>"r) + A);
+
+# NOMINALS
+# Cases
+REMOVE:NoAccIfNom Acc IF (0 Nom);
+# this gets rid of ZERO Accusatives
+
+SELECT:Cmpl1 Cmpl IF (1 Po) ;
+
+SELECT:PoIfCmpl-1 Po IF (-1 Cmpl) ;
+
+REMOVE Relat IF (-1 Cmpl);
+# Та йылысь юӧртліс «Коми му»
+
+REMOVE:NoAWhenRelat A IF (-1 (Nom)) (0 (Relat Sg Ine) OR (Relat Sg Ill) OR (Po Sg Ine) OR (Po Sg Ill));
+# син водзас воссис
+
+# Remove Cmpl reading in personal pron if not followed by Po
+# The Cmpl is used with personal pronouns with a form that takes Po
+# ме тэ сы ми ті на
+# Прохор Иванович Асныров уна во нин кӧнъясынкӧ ветлӧм бӧрын регыдӧн на воӧм
+#REMOVE:AdvNaNotPL3 Cmpl IF (0 Pron Pers Pl3 Cmpl)(1 NotPO) ;
+#REMOVE:prsPrnCmpl Cmpl IF (0 Nom)(1 NotPO) ;
+REMOVE:prsPrnCmpl Cmpl IF (1 NotPO) ;
+
+
+# Numerals
+
+SELECT:CardNomWhenNextNoun Nom IF (0 Num + Card) (1 N); 
+REMOVE:NoAbsAtEnd Abs IF (1 CLB) ;
+# Воис мича асыв .
+#REMOVE (Abs) IF (0 Der/MWN + N + Sg + Nom);
+
+# Pronouns
+REMOVE Interr IF (-2 N)(-1 (","))(0 Rel);
+
+
+
+# Adjectives
+# ==========
+
+#SELECT:AN A + Abs IF (1 N) ;
+SELECT:AAN A + Abs IF (0 A)(1 CC)(2 A + Abs) ;
+
+# Прилагательное или существительное
+
+SELECT:ANnotNN	A IF (-1 Adv OR Qnt)(1 N) ;
+
+REMOVE:WasA2NLeaveN Ex/A + N IF (0C N) ;
+ # паськыдінын
+ # "паськыдін" N Sg Ine
+ # "паськыд" Ex/A Der/Ин N Sg Ine
+
+REMOVE (ConNeg) OR (Imprt Sg2) IF (0 N) (-1 A);
+  # тайӧ абу медводдза гижӧд.
+  
+# Adverbs
+# =======
+
+REMOVE:NotSg1IFAdv Sg1 IF (-1 N OR Pron)(0 Adv)(1C Ind)(NOT 1 Sg1);
+
+#REMOVE:AdvNotPcle Pcle (0 Adv);
+
+# ме регыд муна
+REMOVE:AdvNotA A IF (-1 N or Pron)(0 Adv)(1 V);
+
+# Коми муын медся тӧдса
+REMOVE:MedsjaNotA A IF (0 Adv + Deg)(1 A);
+
+# ме регыд морт
+REMOVE:ANotAdv Adv IF (0 A)(1 N);
+
+# дивитӧмӧн сёрнитіс
+REMOVE:NomActNotAdv Der/ӧмӧн IF (0 Adv) ;
+
+#
+REMOVE:NoAdvWhenPhraseInit Adv IF (-1 BOS OR CLB)(0 ("и" CC)) ;
+
+SELECT Adv + Rel IF (-1 COMMA)(*1 VFIN);
+
+REMOVE:InitialAdv A IF (-1 BOS)(0 Adv)(NOT 1 N OR CC OR A) ;
+
+#REMOVE:RelatorNotAdv Adv IF (0 N + Relat OR Po) ;
+		     # кыз сирпу улысь
+
+#REMOVE:RelatorNotPo Po IF (0 N + Relat OR Adv) ;
+		     # кыз сирпу улысь
+
+# Adpositions
+# =======
+SELECT:NomWhenNextPo Nom IF (1 Po);
+
+# This seems to work
+
+SELECT:AdvWhenPreviousPx Adv IF ((-1 PxSg2) OR (-1 PxSg3)) ;
+
+REMOVE:RelatWhenjylysjVerb Relat IF (0 Po)(*1 V-jylysj BARRIER CLB);
+
+#
+REMOVE Adv IF (-1 (Nom))(0 Po);
+    # ... Ме бӧрын локтӧ меысь вынаджык ...
+
+# Verbs
+# =====
+
+# Select оз that are nouns if only we were able to find them
+SELECT:OzKatastrof N IF (0 ("оз"))(1 ("чӧскыд"));
+# ... другие законы для существителное
+
+# if not, we give in and go for the V reading
+REMOVE:KillOzN N IF (0 ("оз"));
+	# оз - зэв чӧскыд тусь.
+
+#SELECT V IF (-1 (N Nom));
+
+#A Sg Prp vs V Ind Prs Sg1 and Pron Pers Sg1 Nom
+REMOVE (A Sg Prp) IF (0 (Ind Prs Sg1) LINK 0* (Pron Pers Sg1 Nom) BARRIER CLB OR BOS OR EOS LINK NOT 1 Po OR (N Relat)) ;
+
+#"кол" N Sg Ill
+REMOVE N IF (NOT *-1 VFIN BARRIER CS OR CLB) (0 ("ковны")) (NOT *1 VFIN BARRIER CS OR CLB);
+
+REMOVE CS IF (0 Pron) (1 ("нӧ"));
+ # ... юасян: „Мый нӧ нин кӧсйӧ висьтавны меным авторыс? ...
+ 
+# Neg
+# Pl if ConNeg Pl3
+SELECT:NegPlIfConNegPl Neg + Pl3 IF (1 ConNeg + Pl3);
+
+#Not Pl if not ConNeg Pl3
+REMOVE:NegSgIfNotConNegPl Neg + Pl3 IF (NOT 1 ConNeg + Pl3);
+
+# оз [тырмы]
+SELECT:NegIfConNeg Neg IF (1 ConNeg OR Adv);
+
+# миянлы ни ӧти [кыв] эз на шулы
+REMOVE:ConNegWhenNextNeg ConNeg OR Imprt IF (1 Neg);	
+
+# First or third person
+
+# менам баба [пышйи]
+# менам баба [пышйи] купечъяскӧд , а ме -- шуас -- керкаӧс ӧзта .
+REMOVE:1not3inPast (Prt1 Sg3) IF (*-1 (Pers Sg1 Nom) BARRIER N + Nom OR Pers + Sg3 + Nom)(0 (V Prt1 Sg1));
+
+REMOVE:3not1inPast (Prt1 Sg1) IF (NOT *0 (Pers Sg1 Nom BARRIER CLB))(0 IV-WITHSg1Sg3-AMB) ;
+# This may be too strong, it precludes zero Sg1 subjects
+# This needs a list of verbs with this possibility 2026-06-10
+
+REMOVE:CopWhenVFINprecede Cop IF (-1* VFIN BARRIER CLB)(0 A);
+# сӧвмигӧн кадысь пансьывлӧ выль кывъяс вӧсна вен.
+
+REMOVE:CopWhenVFINfollow Cop IF (0 A)(1* VFIN BARRIER CLB);
+
+REMOVE:CopWhenNextNotPxTagN Cop IF (0 A) (1 NotPxTagN);
+# татшӧм сылӧн нимыс
+
+# ConNeg or not
+#REMOVE:NoNegForMe ConNeg IF (NOT *-1 Neg BARRIER CLB);
+REMOVE:OtherConNeg ConNeg IF (-1* ConNeg BARRIER Neg);
+
+SELECT:OnlyConNeg ConNeg IF (-1C Neg)(NOT *1 ConNeg) ;
+
+REMOVE:NoConNegAlone ConNeg IF (NOT *0 Neg);
+
+# IV no Acc
+REMOVE:NoAccWhenNextNumAgrees Acc IF (0 Pl + Nom)(1 Prs + Pl3 OR Prt1 + Pl3 OR Prt2 + Pl3);
+# ӧтияс артмӧдӧны выль кывъяссӧ, мӧдъяс...
+
+# TV if Acc
+REMOVE IV IF (0 TV) (0* Acc BARRIER EOS OR BOS OR CLB) ;
+    # Тэ босьтін сійӧс киад
+
+# coordination
+REMOVE:NoIllInePxSg3WhenPlParallelConjunction (Sg Ill PxSg3) OR (Sg Ine PxSg3) IF (0 (N Pl Nom)) (1 CC) (2* (N Pl Nom) BARRIER EOS OR Ind) ;
+  # Юяс да сьӧлӧмъяс
+
+# Imperative or noun
+
+#REMOVE:NotImpWhenInd Imprt IF (*-1C Ind);
+REMOVE:NotImpWhenWords Imprt IF (-1 N)(0 N);
+#REMOVE:NotImpWhenWords Imprt IF (-1 WORD LINK *-1 BOS BARRIER Imprt);
+
+# ConNeg Sg/Pl
+REMOVE Pl2 IF (0 Neg + Sg2)(1 ConNeg)(NOT 1 Pl2) ;
+
+# Prs or Fut
+#SELECT Fut IF сегодня (...)
+SELECT:Fut Fut IF (-1 ASKI);
+SELECT:Fut Fut IF (1 ASKI);
+REMOVE:KillFut Fut IF (0 Prs);
+
+SELECT:AbuNegWhenNextPrt2 Neg IF (0 ("абу"))(1 Prt2 OR N OR A);
+# юркывйысь абу пасйӧма ни ӧти...
+
+SELECT:Prt2WhenPrevAbuNeg Prt2 IF (-1 ("абу"))(0 Prt2);
+# юркывйысь абу пасйӧма ни ӧти...
+
+SELECT:AdvOkota Adv IF (-1 ("зэв")) (0 ("окота"));
+
+#REMOVE:VfinWhenOtherOnlyVfin VFIN IF (0C Ill)(NOT 1 Non-VFIN);
+# кор венӧ кутчысьӧны ошйысьысь 2018-10-20 Jaska
+
+# да
+
+SELECT:DaAdv1 Adv IF (-1 BOS)(0 ("да"))(1 EOS OR COMMA);
+## Да, я знаю
+
+REMOVE:DaAdv2 Adv IF (0 ("да"));
+## Коми да мари
+
+SELECT:DaPcle Pcle IF (0 ("да"))(-1 Pcle)(1 EOS OR COMMA);
+SELECT:DaPcle Pcle IF (-1 BOS) (0 ("да"))(1 EOS OR COMMA);
+SELECT:DaCS CS IF (0 ("да"))(1 EOS OR COMMA);
+SELECT:DaAllA CC IF (*-1 $$WORD CBARRIER Non-Pcle) (0 ("да"))(1 $$WORD);
+SELECT:DaAllN CC IF (*-1 NOMINAL CBARRIER Non-Pcle) (0 ("да"))(1 NOMINAL);
+
+
+SELECT:DaGlobal CC IF (*-1 V BARRIER CS OR CLB) (0 ("да"))(*1 V);
+
+
+
+# и
+REMOVE ABBR IF (0 CC)(NOT 1 ("."));
+REMOVE Pcle IF (-1 N + $$CASE)(1 N + $$CASE);
+
+#REMOVE Interj IF (NOT 1* ("!") BARRIER COMMA) ;
+
+#REMOVE Acc IF (0C Nom OR Acc) (NOT *-1 VFIN BARRIER BOS) (NOT *-1 VFIN BARRIER EOS);
+# REMOVE Acc IF (0C Nom OR Acc) (NOT -1* VFIN BARRIER BOS) (NOT -1* VFIN BARRIER EOS);
+## Аддзис руч  кыз сирпу улысь горс,
+##  V     Nom            Ela   Acc
+
+#REMOVE:NotNomIfVFINLeft Nom IF (-1 V) (*-1 VFIN BARRIER BOS) (NOT -2 BOS);
+#REMOVE:NotNomIfVFINLeft Nom IF (-1 V) (*-1 VFIN BARRIER BOS);
+## Аддзис руч кыз сирпу улысь горс, 
+## 1. Аддзис руч кыз сирпу улысь горс, ???
+
+REMOVE:NotPoIfSentInitial Po IF (0C Po OR Adv) (-1 PUNCT + LEFT OR BOS) ;
+# « Бӧрті , кор пысавла тшакӧс
+
+# Predicative
+
+#SELECT A IF (*-1 ("вӧвны") BARRIER N);
+
+# Mapping
+
+SELECT Acc IF (-1 Po) (1 CC);
+#...чужанін дорӧ муслун да...
+
+
+REMOVE N IF (-1 N) (0 N) (1 Pcle);
+SELECT Adv IF (-1 (N Ela)) (0 Adv);
+#SELECT Adv IF (-1 BOS) (0 Adv);
+REMOVE:NoSimpleAdvWhenVAdv Adv (0 (V VCar));
+SELECT Adv IF (-1 V) (1 EOS);
+
+#SELECT Acc IF (1 (V TV));
+
+#  кань юис ва да йӧв.
+#SELECT (N Nom) IF (1 (V IV)) ;
+#SELECT Imprt IF (1 Acc) ;
+
+#SELECT A IF (-1 V) (1 N);
+SELECT Inf IF (-1 V) ;
+SELECT Inf IF (-2 V) ;
+SELECT Pcle IF (1 A) (0 ("медся"));
+SELECT Inf IF (-1 BOS) (0 V) ;
+REMOVE:NoAspDerIfPossible AspDerTag ;
+REMOVE Acc IF (-1 (V Refl)) ;
+# The rule below is too aggressive: вывті Adv вылын N 
+# SELECT N OR Pron IF (1 Po) ;
+#SELECT Adv IF (-1 V) ;
+#REMOVE V IF (-1 A) ;
+# This rule is too aggressive if there is
+# a number head word and an interceding Proprietive
+# Куим даддя локтӧ.
+
+#SELECT Adv IF (1 Ex/V) ;
+REMOVE Relat IF (-1 ("мый")) (0 Po);
+# тӧдмавны, мый йылысь гижӧ
+SELECT CS IF (-1 COMMA) (0 ("мый")) ;
+REMOVE CS IF (-1 BOS)(0 ("мый")) ;
+SELECT CS IF (-1 COMMA) (0 ("быттьӧ")) ;
+REMOVE ConNeg IF (-1 BOS) ;
+# This rule is too aggressive if there is
+# dialectal verb тэсны 'to meet', i.e. in
+# construction "…сылы тэсӧ кӧч…" 'he meets a rabbit'
+# The problem is caused by ambiguity in meaning of
+# тэсӧ.
+SELECT Pron IF (1 N) (NOT 0 ("тэсны"));
+SELECT Inf IF (1 (V Neg)) ;
+#SELECT CS IF (-1 COMMA) (0 ("мыйла")) ;
+SELECT Pcle IF (-1 Adv)(0 ("нин")) (1 V);
+
+REMOVE Imprt IF (-1 V) ;
+
+#SELECT (N Nom) IF (-1 (A Nom));
+SELECT Pcle IF (1 EOS)(0 ("и")) ;
+REMOVE Imprt IF (-1 N OR Pron) (0 Imprt);
+REMOVE Nom IF (-3 (V TV)) (-2 Acc) (-1 CC) ;
+REMOVE Pcle IF (-1 BOS)(0 ("и")) ;
+SELECT A IF (1 N) (0 ("кӧдзыд")) ;
+REMOVE Nom IF (-1 Imprt) ;
+REMOVE N IF (-1 ("медся")) ;
+REMOVE:NoPoWhenNoComplementToLeft Po OR NotPxTagN + Relat IF (NOT -1 N OR Pron) ;
+#REMOVE Po IF (-1 BOS) ;
+#REMOVE Po IF (-1 CLB) ;
+
+
+# This rule is too aggressive: "Ӧні видзӧд татчӧ."
+# REMOVE Imprt IF (-1 Adv OR Qnt) ;
+SELECT V IF (-1 Inf) (0 V);
+
+REMOVE:NomActProprietive Der + Der/ProprietiveMod (0 Ind + Prt2) ;
+REMOVE:PastPtc4Prt2 PastPtc + N + Sg + Nom (0 Ind + Prt2) ;
+    # Улыс увъяссӧ козйыслысь ваыс чегъялӧма
+
+REMOVE:NoPrsSg3WhenPrecededBySg1Pers (Ind Prs Sg3) IF (0 ("вылӧ" Po Sg Ill)) (-1 ("ме" Pron Pers Sg1 Nom));
+
+REMOVE Prp IF (0 (Ind Prt2)) ;
+  # кыдзи вӧлі шуӧма найӧс
+
+SELECT Nom IF (*-1 Acc + PxTag BARRIER CLB);
+# This rule is too aggressive, if we actually want to analyze those as NOM
+# SELECT Acc IF (-1 (V TV))(0 N OR Pron);
+# ӧтияс артмӧдӧны выль кывъяссӧ, мӧдъяс...
+
+SELECT:FirstNameWhenNextSurname (N Nom) IF (0 FirstName)(1 Surname OR Patronym) ;
+SELECT (N Nom) IF (-1 (V IV VFIN)) ;
+
+SELECT:MonthName (N "тӧлысь") IF (-1 Months) ;
+
+# PrsPtc
+
+SELECT PrsPtc IF (1 N);
+
+REMOVE PrsPrc IF (-1 ("тэ")) ;
+REMOVE PrsPtc IF (-1 ("тэ")) ;
+#REMOVE PrsPrc IF (1 V) ;
+#REMOVE PrsPtc IF (1 V) ;
+SELECT ConNeg IF (-1 (V Neg)) ;
+
+SELECT:Prt2NotOmaA (Ind Prt2) IF (NOT *-1 VFIN BARRIER BOS) (NOT *-1 VFIN BARRIER EOS) ;
+
+# сӧвмӧ вӧлі гижан кывным
+REMOVE:NotAnPrsPrc (Der/Ан PrsPrc) IF (NOT *-1 VFIN BARRIER BOS) (NOT *-1 VFIN BARRIER EOS) ;
+
+#too strong SELECT:ANomNotAAcc (A Nom) IF (1 N) ;
+#Но, Ижмаыслэн ю кузяыс сиктъяс дорас,
+
+#REMOVE Adv IF (-1 (N Nom)) ;
+# кывсӧ пыдісянь гӧгӧрвоысьяс да гӧгӧрбок
+
+REMOVE Po IF (-1 Adv) ;
+REMOVE (Prt2 Sg1) IF (-1 N) ;
+SELECT PastPtc IF (1 N OR A) ;
+SELECT ActPrsPtc IF (1 N OR A) ;
+REMOVE:NoDerIfPossible DerTag ;
+SELECT NomAct IF (0 V) ;
+
+#to strong REMOVE Refl IF (-1 V) ;
+# Саша, висьтоо ассьыд полнэй нимтэ
+# Саша, висьтав ассьыд полнӧй нимтӧ
+
+SELECT Interj IF (1 CLB) ;
+SELECT (N Acc) IF (-2 (V TV)) (-1 Pron OR A) ;
+
+REMOVE N IF (0 ("посни")) (1 N);
+
+REMOVE Abs IF (0 Abs OR Nom) (0 N) ;
+
+SELECT:VylöVerb (V "вывны") IF (-1 (V "овны")) ;
+# олӧ вылӧ
+
+# Remove Po if there is Relat reading 2021-02-25 Jaska
+#REMOVE:RelatNotPo Po IF (0 Relat) ;
+# Reverse this 2024-05-02
+REMOVE:PoNoRelat Relat IF (0 Po) ;
+
+SELECT:KuzjaPo (Po "кузя") IF (-1 (N Nom)) ;
+
+SELECT:VylöPo (Po "вылӧ") IF (-1 (N Nom)) ;
+# му вылӧ
+
+# Remove Qnt if there is Num reading
+REMOVE:NumNotQnt Qnt IF (0 Num) ;
+
+# Remove Pcle reading from сӧмын
+REMOVE:somynAdv (Pcle "сӧмын") IF (0 Adv) ;
+
+# Remove CS reading сӧмын if not after , or clause boundary
+REMOVE:somynCs (CS "сӧмын") IF (NOT -1 EOS OR COMMA) ;
+
+# ветлі батькӧд пыр чери кыйны
+SELECT:AdvNotPo (Adv "пыр") IF (NOT -1 (N Nom)) ;
+
+# уна Adv instead of уна Qnt
+REMOVE:UnaAdv (Qnt "уна") IF (0 Adv) ;
+
+# We disambiguate all N Sg Nom / Acc + N combinations as 
+# Nom for the first element
+#SELECT:nmodNotAcc (N Sg Nom) IF (0 Nom) (1 N) ;
+
+# These rules try to keep the accusative tag only when it is marked
+REMOVE:NomWhenAccMarked (Nom) IF (0 Acc) (0 PxSg3 OR PxSg2) ;
+REMOVE:AccWhenNominative (Acc) IF (0 Acc) (NOT 0 PxSg3 OR PxSg2) ;
+
+REMOVE:NoErrDial Err/Dial ;
+REMOVE:NoErrOrth Err/Orth ;
+
+# This is just a test, doesn't work
+# SELECT:AisNomNotAccIfFollowedByN Nom IF (1 (N Nom)) ;
+
+## TODO
+#
+# "<идралӧм>"
+#	"идравны" V TV Der Der/ӧм Der/NomAct N Sg Nom @SUBJ> #2->0
+#	"идралӧм" V Der Der/ӧм N Sg Nom @SUBJ> #2->0
+#
+# кылӧ гора "ура" <- this should be Interj
+#
+#
+#
+
