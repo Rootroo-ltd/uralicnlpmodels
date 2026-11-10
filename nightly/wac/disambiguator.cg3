@@ -1,0 +1,106 @@
+# ===================== #
+# wac disambiguator #
+# ===================== #
+
+# Alphabet below must be all multichar symbols used in all rules
+STRICT-TAGS +=
+    # Tags from lexicon
+    N V A Prop Adv Num CC CS Interj
+    Abbr ACR Pr Pron
+    Pers Det Dem Refl Recipr Poss Interr
+    Nom Acc Gen Dat Instr
+    Msc Fem Neu
+    Sg Pl
+    Def Indef
+    Cmp Superl
+    Prs Prt
+    1Sg 2Sg 3Sg
+    Inf
+    PrfPrc PrsPrc
+    Ind Imp Sbj Sup
+    Cmpnd
+    CLB PUNCT LEFT RIGHT
+    Guess
+    # Tags used in syntax
+    @<SUBJ @SUBJ> @<OBJ @<IOBJ @OBJ> @IOBJ>
+    @+FMAINV @-FMAINV
+    @<ADVL @ADVL> @ADVL
+    @CNP @CVP
+    @INTERJ
+    @X
+    ;
+
+OPTIONS += no-inline-sets ;
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>" ;
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+# ========
+   SETS
+# ========
+
+LIST BOS = (>>>) (<s>);
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Guess ;
+
+
+LIST NAGD = Nom Acc Gen Dat ;
+LIST RARECASES = Instr ;
+LIST GENDER = Msc Fem Neu ;
+LIST NUMBER = Sg Pl ;
+LIST VFIN = Prs Prt Imp ;
+LIST INFMARK = ("to") ;
+# Sets
+# ====
+
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
+
+
+
+
+########################                  #########################
+########################                  #########################
+                        # disambiguation #
+########################                  #########################
+########################                  #########################
+
+SECTION
+
+
+# Always remove guesses if anything better is available
+REMOVE Guess ;
+
+# E.g. select infinitive if previous word is infinitive marker:
+SELECT:toInf Inf IF (-1 INFMARK);
+
+
+# ======== #
+###SECTION  #
+# ======== #
+
+
+MAP:interjection (@INTERJ) TARGET Interj ;
+MAP:cconjunction (@CNP @CVP) TARGET CC ;
+ADD:sconjunction (@CVP) TARGET CS ;
+MAP:oneverbpersentence (@+FMAINV) TARGET VFIN IF (NEGATE *0 V);
+
+
+
+AFTER-SECTIONS
+
+# last resort rules
+REMOVE:rarecases RARECASES ;
